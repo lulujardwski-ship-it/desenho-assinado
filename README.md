@@ -2,7 +2,7 @@
 
 Nome: Luiz Henrique Weinert Jardwski
 RA: 2026107781
-URL: Aguardando publicacao no Cloudflare Pages.
+URL: https://desenho-assinado-8dq.pages.dev/
 
 Atividade individual de Desenvolvimento Web Pratico. O navegador recebe um
 numero de 1 a 100 e um ID token do Google Identity Services. Uma Cloudflare
