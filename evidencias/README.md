@@ -1,10 +1,16 @@
 # Evidencia obrigatoria
 
-A entrega so fica completa quando `exemplo.svg` for gerado no site publicado
-apos um login real com a conta Google do aluno.
+O arquivo `exemplo.svg` foi baixado pelo aluno no site publicado
+https://desenho-assinado-8dq.pages.dev/ depois do login com Google.
 
-Use os dois ultimos digitos do seu RA (se forem 00, use 100) e clique em **Baixar SVG**.
-Salve o arquivo baixado como `evidencias/exemplo.svg` e faca commit na branch
-`main`. Nao edite o SVG: o corretor compara o desenho com a funcao original.
+- Aluno: Luiz Henrique Weinert Jardwski.
+- RA: 2026107781.
+- Numero utilizado: 81.
+- Assinatura: lulujardwski@gmail.com.
+- Data da verificacao: 13/10/2026.
+- Tamanho: 19.779 bytes.
+- SHA-256: 1049a90cb103b6f720773aaffecb45035db9dd50d47f09c9116109421587afd4.
 
-Este arquivo de orientacoes nao substitui a evidencia exigida.
+O SVG foi comparado byte a byte com o resultado da funcao original
+`gerarDesenho(81, "lulujardwski@gmail.com")`; o conteudo e identico.
+O arquivo recebido foi preservado sem nenhuma alteracao.

@@ -30,7 +30,7 @@ O desenho liga cada ponto i a ((numero + 1) * i) mod 240 na circunferencia.
 | functions/api/desenho.js | POST /api/desenho. |
 | functions/api/config.js | GET /api/config: retorna somente o Client ID publico. |
 | tests/api.test.js | Testes locais do contrato, sem credenciais reais. |
-| evidencias/exemplo.svg | PENDENTE: baixar do site publicado apos login real. |
+| evidencias/exemplo.svg | SVG baixado do site pelo aluno, numero 81, assinado pela conta Google. |
 
 O diretorio public/ nao contem o codigo de geracao. O token fica somente
 na memoria da pagina, sem cookies, localStorage ou armazenamento no GitHub.
@@ -106,15 +106,15 @@ executa as Pages Functions.
 - [x] Site publicado no Cloudflare Pages e URL real preenchida acima.
 - [x] OAuth Client do tipo Web application criado no Google Cloud.
 - [x] Testes 405, 400 e 401 executados no site publicado.
-- [ ] GOOGLE_CLIENT_ID configurado no ambiente Production e aplicado em novo deployment.
-- [ ] Login real com Google e resposta 200 com SVG no site publicado.
-- [ ] SVG gerado com os dois ultimos digitos do RA (00 vira 100), baixado e
+- [x] GOOGLE_CLIENT_ID configurado no ambiente Production e aplicado em novo deployment.
+- [x] Fluxo de login e geracao no site concluido pelo aluno; SVG baixado e conferido.
+- [x] SVG gerado com o numero 81, derivado do RA 2026107781, baixado e
   salvo em evidencias/exemplo.svg.
-- [ ] Evidencia commitada na branch main antes do prazo.
+- [x] Evidencia commitada na branch main.
 
 O botao Baixar SVG salva a resposta original como exemplo.svg, sem alterar
-o desenho. A evidencia ainda nao existe e deve ser obtida no site publicado
-apos autenticacao real, conforme o enunciado.
+o desenho. A evidencia recebida do aluno foi preservada sem modificar
+nenhum byte e corresponde ao desenho original para o numero 81.
 
 ## Verificacao em 13/10/2026
 
@@ -127,24 +127,29 @@ Os 44 testes locais passaram. No site publicado foram verificados:
 - /desenho.js, /lib/desenho.js e /functions/api/desenho.js: 404.
 - Nenhuma dessas respostas publicas contem gerarDesenho.
 
-A rota /api/config retornou 503 com "Login indisponivel no momento".
-O GOOGLE_CLIENT_ID ainda nao esta ativo no deployment verificado.
-Os testes de 401 nessa publicacao nao comprovam a consulta real ao Google,
-pois a configuracao ausente tambem resulta em 401. O teste com login real
-e resposta 200 continua pendente.
+Depois de configurar GOOGLE_CLIENT_ID em Production e fazer um novo
+deployment, /api/config passou a responder 200 com o Client ID completo.
+Os testes de metodo, corpo, token ausente e token artificial invalido foram
+repetidos nessa publicacao e retornaram 405, 400, 401 e 401.
 
-### Proxima etapa
+O aluno concluiu o fluxo no site, fez o download e enviou o exemplo.svg.
+A evidencia usa data-numero="81" e a assinatura lulujardwski@gmail.com.
+A comparacao byte a byte com gerarDesenho(81, "lulujardwski@gmail.com")
+foi identica. O arquivo tem 19.779 bytes e 237 segmentos.
 
-1. Copiar o ID do cliente OAuth criado no Google Cloud (terminado em
-   .apps.googleusercontent.com).
-2. No projeto Pages, abrir Settings > Variables and Secrets > Add,
-   selecionar Production e salvar GOOGLE_CLIENT_ID com esse ID.
-3. Fazer um novo deployment e conferir que /api/config retorna 200.
-4. Conferir a origem autorizada https://desenho-assinado-8dq.pages.dev
-   no OAuth Client do Google.
-5. Abrir o site, entrar com Google, usar o numero **81** (RA 2026107781),
-   clicar em Desenhar e depois Baixar SVG.
-6. Fazer commit do arquivo baixado em evidencias/exemplo.svg na branch main.
+SHA-256 do arquivo original recebido:
+1049a90cb103b6f720773aaffecb45035db9dd50d47f09c9116109421587afd4
+
+O token real ficou na memoria do navegador do aluno e nao foi enviado
+para o repositorio. Os testes locais usam respostas simuladas do Google;
+o teste manual do login foi realizado pelo aluno no site publicado.
+
+## Conferencia da entrega
+
+O repositorio e o site publicado estao prontos para a verificacao do
+professor. Entregar os links registrados nas linhas Nome:, RA: e URL:,
+conforme as orientacoes da disciplina. Manter o site e o OAuth Client
+disponiveis durante a correcao.
 
 ## Documentacao
 
