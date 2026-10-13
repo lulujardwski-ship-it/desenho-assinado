@@ -1,0 +1,11 @@
+{
+  "name": "desenho-assinado",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "dev": "npx wrangler pages dev public"
+  },
+  "engines": { "node": ">=22" }
+}
