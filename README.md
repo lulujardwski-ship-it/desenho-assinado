@@ -103,9 +103,11 @@ executa as Pages Functions.
 - [x] Nome e RA preenchidos.
 - [x] Funcao de desenho movida para o servidor.
 - [x] API e mensagens de erro implementadas.
-- [ ] Site publicado no Cloudflare Pages e URL real preenchida acima.
-- [ ] OAuth Client e GOOGLE_CLIENT_ID configurados.
-- [ ] Login real e testes 405, 400, 401 e 200 no site publicado.
+- [x] Site publicado no Cloudflare Pages e URL real preenchida acima.
+- [x] OAuth Client do tipo Web application criado no Google Cloud.
+- [x] Testes 405, 400 e 401 executados no site publicado.
+- [ ] GOOGLE_CLIENT_ID configurado no ambiente Production e aplicado em novo deployment.
+- [ ] Login real com Google e resposta 200 com SVG no site publicado.
 - [ ] SVG gerado com os dois ultimos digitos do RA (00 vira 100), baixado e
   salvo em evidencias/exemplo.svg.
 - [ ] Evidencia commitada na branch main antes do prazo.
@@ -113,6 +115,36 @@ executa as Pages Functions.
 O botao Baixar SVG salva a resposta original como exemplo.svg, sem alterar
 o desenho. A evidencia ainda nao existe e deve ser obtida no site publicado
 apos autenticacao real, conforme o enunciado.
+
+## Verificacao em 13/10/2026
+
+Os 44 testes locais passaram. No site publicado foram verificados:
+
+- GET e PUT em /api/desenho: 405.
+- POST com corpo vazio, JSON invalido, numero ausente, decimal ou maior que 100: 400.
+- POST com numero 81 sem token e com token artificial invalido: 401.
+- Pagina inicial e public/script.js publicado como /script.js: 200.
+- /desenho.js, /lib/desenho.js e /functions/api/desenho.js: 404.
+- Nenhuma dessas respostas publicas contem gerarDesenho.
+
+A rota /api/config retornou 503 com "Login indisponivel no momento".
+O GOOGLE_CLIENT_ID ainda nao esta ativo no deployment verificado.
+Os testes de 401 nessa publicacao nao comprovam a consulta real ao Google,
+pois a configuracao ausente tambem resulta em 401. O teste com login real
+e resposta 200 continua pendente.
+
+### Proxima etapa
+
+1. Copiar o ID do cliente OAuth criado no Google Cloud (terminado em
+   .apps.googleusercontent.com).
+2. No projeto Pages, abrir Settings > Variables and Secrets > Add,
+   selecionar Production e salvar GOOGLE_CLIENT_ID com esse ID.
+3. Fazer um novo deployment e conferir que /api/config retorna 200.
+4. Conferir a origem autorizada https://desenho-assinado-8dq.pages.dev
+   no OAuth Client do Google.
+5. Abrir o site, entrar com Google, usar o numero **81** (RA 2026107781),
+   clicar em Desenhar e depois Baixar SVG.
+6. Fazer commit do arquivo baixado em evidencias/exemplo.svg na branch main.
 
 ## Documentacao
 
