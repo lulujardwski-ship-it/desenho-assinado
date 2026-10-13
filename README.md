@@ -1,7 +1,7 @@
 # Desenho Assinado
 
-Nome: PENDENTE
-RA: PENDENTE
+Nome: Luiz Henrique Weinert Jardwski
+RA: 2026107781
 URL: Aguardando publicacao no Cloudflare Pages.
 
 Atividade individual de Desenvolvimento Web Pratico. O navegador recebe um
@@ -100,7 +100,7 @@ executa as Pages Functions.
 ## Conclusao da entrega
 
 - [x] Codigo original clonado e licenca preservada.
-- [ ] Nome e RA preenchidos apos autorizacao para publica-los no repositorio.
+- [x] Nome e RA preenchidos.
 - [x] Funcao de desenho movida para o servidor.
 - [x] API e mensagens de erro implementadas.
 - [ ] Site publicado no Cloudflare Pages e URL real preenchida acima.
